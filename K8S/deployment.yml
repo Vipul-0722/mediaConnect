@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mediConnect-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mediConnect
+  template:
+    metadata:
+      labels:
+        app: mediConnect
+    spec:
+      containers:
+        - name: mediConnect
+          image: vipul710/mediConnect-app:lastest
+          ports:
+            - containerPort: 3000
