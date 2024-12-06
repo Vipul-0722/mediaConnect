@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "vipulbucket0710" 
+    bucket = "mediconnect07" 
     key    = "EKS/terraform.tfstate"
     region = "ap-south-1"
   }
