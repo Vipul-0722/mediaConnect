@@ -1,31 +1,34 @@
-import { Button, Form, Input } from "antd"
-import React from "react"
-import toast from "react-hot-toast"
-import { useSelector, useDispatch } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
-import axios from "axios"
-import { hideLoading, showLoading } from "../redux/alertsSlice"
+import { Button, Form, Input } from "antd";
+import React from "react";
+import toast from "react-hot-toast";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { hideLoading, showLoading } from "../redux/alertsSlice";
 
 function Login() {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const onFinish = async (values) => {
     try {
-      dispatch(showLoading())
-      const response = await axios.post("/api/user/login", values)
-      dispatch(hideLoading())
+      dispatch(showLoading());
+      const response = await axios.post(
+        "https://mediconnect-server-dzpz.onrender.com/api/user/login",
+        values
+      );
+      dispatch(hideLoading());
       if (response.data.success) {
-        toast.success(response.data.message)
-        localStorage.setItem("token", response.data.data)
-        navigate("/")
+        toast.success(response.data.message);
+        localStorage.setItem("token", response.data.data);
+        navigate("/");
       } else {
-        toast.error(response.data.message)
+        toast.error(response.data.message);
       }
     } catch (error) {
-      dispatch(hideLoading())
-      toast.error("Something went wrong")
+      dispatch(hideLoading());
+      toast.error("Something went wrong");
     }
-  }
+  };
 
   return (
     <div
@@ -81,7 +84,7 @@ function Login() {
         </Form>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
