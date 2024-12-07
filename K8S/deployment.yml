@@ -13,7 +13,7 @@ spec:
         app: mediconnect
     spec:
       containers:
-        - name: mediConnect
+        - name: mediconnect
           image: vipul710/mediconnect:latest
           ports:
             - containerPort: 3000
